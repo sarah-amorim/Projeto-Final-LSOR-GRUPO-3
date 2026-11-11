@@ -1,4 +1,4 @@
-# Projeto Final LSOR — Serviços de rede com login unificado
+# Projeto Final LSOR 
 
 **INSTITUTO FEDERAL DE EDUCAÇÃO, CIÊNCIA E TECNOLOGIA DE ALAGOAS (IFAL) — Campus Maceió**
 **Curso:** Bacharelado em Sistemas de Informação (BSI)
@@ -6,12 +6,12 @@
 **Professor:** Alaelson de Castro Jatobá Neto
 **Turma:** bsi-26-2 · **Grupo:** 3
 **Rede do grupo:** `192.168.26.48/28` · **Domínio:** `grupo3.bsi-26-2.maceio.lab`
-**Apresentação:** 02/12/2026 · **Data deste relatório:** <dd/mm/aaaa>
+**Apresentação:** 02/12/2026 · **Data deste relatório:** 11/11/2026
 
 | Integrante | Matrícula | Usuário (LDAP) | uidNumber |
 |:--|:--|:--|:--:|
-| Nome Completo 1 | 0000000000 | nome.sobrenome | 10001 |
-| Nome Completo 2 | 0000000000 | nome.sobrenome | 10002 |
+| Sarah Amorim dos Santos | 2024014201 | sarah.amorim | 10001 |
+| Pedro Henrique Cavalcante Rocha | 2023007730 | pedro.rocha | 10002 |
 | Nome Completo 3 | 0000000000 | nome.sobrenome | 10003 |
 | Nome Completo 4 | 0000000000 | nome.sobrenome | 10004 |
 
@@ -25,7 +25,7 @@ Na Etapa 1, o grupo montou uma rede privada com IPs fixos, nomes no domínio do 
 
 Nesta fase, o projeto roda no **VirtualBox do laboratório**, reaproveitando as 9 VMs da Etapa 1 (placas em Bridge).
 
-## 2. 🎯 Objetivo
+## 2. Objetivo
 
 Transformar a rede da Etapa 1 em um ambiente de serviços com login unificado, de modo que:
 
