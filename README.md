@@ -13,8 +13,8 @@
 |:--|:--|:--|:--:|
 | Sarah Amorim dos Santos | 2024014201 | sarah.amorim | 10001 |
 | Pedro Henrique Cavalcante Rocha | 2023007730 | pedro.rocha | 10002 |
-| Nome Completo 3 | 0000000000 | nome.sobrenome | 10003 |
-| Nome Completo 4 | 0000000000 | nome.sobrenome | 10004 |
+| Marco Bueno | 2021008953 | marco.bueno | 10003 |
+| Arthur Soares Silva | 2021008710 | arthur.soares | 10004 |
 
 > Nenhuma senha, chave privada ou *hash* `{SSHA}` é publicada neste repositório.
 
