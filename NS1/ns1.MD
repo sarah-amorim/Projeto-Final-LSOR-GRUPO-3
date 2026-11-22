@@ -21,7 +21,7 @@ O BIND (sigla para Berkeley Internet Name Domain) é o software de servidor DNS 
 sudo apt-get update
 sudo apt-get install -y bind9 bind9-utils dnsutils
 ```
-O arquivo /etc/bind/named.conf.options define o comportamento global e as regras de segurança do servidor DNS BIND9, estabelecendo quem pode fazer consultas, como resolver nomes externos e onde armazenar dados temporários.
+O arquivo ```/etc/bind/named.conf.options``` define o comportamento global e as regras de segurança do servidor DNS BIND9, estabelecendo quem pode fazer consultas, como resolver nomes externos e onde armazenar dados temporários.
 ```
 acl grupo { 10.26.2.115; 10.26.2.116; 10.26.2.117; 10.26.2.118;
             10.26.2.119; 10.26.2.120; 10.26.2.121; localhost; };
@@ -38,7 +38,7 @@ options {
     dnssec-validation no;
 };
 ```
-O arquivo /etc/bind/named.conf.local é utilizado no BIND9 para declarar as zonas locais pelas quais o servidor DNS é responsável de forma autoritativa, informando onde estão armazenados os registros e como ocorre a sincronização com o servidor secundário (ns2).
+O arquivo ```/etc/bind/named.conf.local``` é utilizado no BIND9 para declarar as zonas locais pelas quais o servidor DNS é responsável de forma autoritativa, informando onde estão armazenados os registros e como ocorre a sincronização com o servidor secundário (ns2).
 ```
 zone "grupo3.bsi-26-2.maceio.lab" {
     type primary;
@@ -54,7 +54,7 @@ zone "2.26.10.in-addr.arpa" {
     also-notify    { 10.26.2.116; };
 };
 ```
-O arquivo /etc/bind/db.grupo3 é o arquivo de zona direta do Grupo 3, responsável por mapear cada nome de máquina do domínio para o seu respectivo endereço IPv4.
+O arquivo ```/etc/bind/db.grupo3``` é o arquivo de zona direta do Grupo 3, responsável por mapear cada nome de máquina do domínio para o seu respectivo endereço IPv4.
 ```
 $TTL 3600
 @       IN  SOA ns1.grupo3.bsi-26-2.maceio.lab. administrador.grupo3.bsi-26-2.maceio.lab. (
@@ -75,7 +75,7 @@ arquivos IN  A   10.26.2.119
 ldap     IN  A   10.26.2.120
 cliente  IN  A   10.26.2.121
 ```
-O arquivo /etc/bind/db.10.26.2 é o arquivo de zona reversa do Grupo 3, responsável por realizar o caminho oposto ao da zona direta: traduzir um endereço IPv4 de volta para o seu nome de domínio completo (FQDN), algo essencial para auditoria de logs, verificação de segurança de serviços como SSH e e-mail, e testes de diagnóstico com comandos como dig -x.
+O arquivo ```/etc/bind/db.10.26.2``` é o arquivo de zona reversa do Grupo 3, responsável por realizar o caminho oposto ao da zona direta: traduzir um endereço IPv4 de volta para o seu nome de domínio completo (FQDN), algo essencial para auditoria de logs, verificação de segurança de serviços como SSH e e-mail, e testes de diagnóstico com comandos como dig -x.
 ```
 $TTL 3600
 @       IN  SOA ns1.grupo3.bsi-26-2.maceio.lab. administrador.grupo3.bsi-26-2.maceio.lab. (
