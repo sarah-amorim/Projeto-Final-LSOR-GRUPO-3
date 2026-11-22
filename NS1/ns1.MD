@@ -15,11 +15,36 @@ sudo apt-get install -y bind9 bind9-utils dnsutils
 ```
 Opções: /etc/bind/named.conf.options
 ```
+acl grupo { 10.26.2.115; 10.26.2.116; 10.26.2.117; 10.26.2.118;
+            10.26.2.119; 10.26.2.120; 10.26.2.121; localhost; };
 
+options {
+    directory "/var/cache/bind";
+    listen-on-v6 { none; };
+
+    allow-query     { grupo; };
+    allow-recursion { grupo; };
+    allow-transfer  { none; };
+
+    forwarders { 172.20.0.10; 172.20.0.11; };
+    dnssec-validation no;
+};
 ```
 Zonas: /etc/bind/named.conf.local
 ```
+zone "grupo3.bsi-26-2.maceio.lab" {
+    type primary;
+    file "/etc/bind/db.grupo3";
+    allow-transfer { 10.26.2.116; };
+    also-notify    { 10.26.2.116; };
+};
 
+zone "2.26.10.in-addr.arpa" {
+    type primary;
+    file "/etc/bind/db.10.26.2";
+    allow-transfer { 10.26.2.116; };
+    also-notify    { 10.26.2.116; };
+};
 ```
 Zona direta: /etc/bind/db.grupo3
 ```
