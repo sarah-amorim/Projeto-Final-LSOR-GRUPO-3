@@ -1,9 +1,10 @@
-No projeto, o ns1 (abreviação de Name Server 1) é a máquina virtual (VM1, com IP .2 na sub-rede do grupo) configurada com o software BIND9 para atuar como o servidor DNS primário da rede. Ele é o servidor central responsável por traduzir os nomes das máquinas em endereços IP e vice-versa para todas as outras VMs do grupo, permitindo que os serviços se comuniquem pelo nome em vez de dependerem de IPs decorados ou de arquivos /etc/hosts locais.
-
-## Configurações aplicadas na VM
+# Configurações da máquina virtual ```ns1```
+No projeto, o ns1 (abreviação de Name Server 1) é a máquina virtual configurada com o software BIND9 para atuar como o servidor DNS primário da rede. Ele é o servidor central responsável por traduzir os nomes das máquinas em endereços IP e vice-versa para todas as outras VMs do grupo, permitindo que os serviços se comuniquem pelo nome em vez de dependerem de IPs decorados ou de arquivos ```/etc/hosts``` locais.
 
 ### Definição do Hostname
-O hostname é o nome único que identifica uma máquina na rede. No projeto, ele é configurado como o FQDN (Fully Qualified Domain Name ou Nome de Domínio Totalmente Qualificado), que une o nome do serviço ao domínio do grupo, por exemplo, ```ns1.grupo0.bsi-26-2.maceio.lab```. No Projeto Final, cada máquina assume o nome do serviço que hospeda (gw, ns1, ns2, www, bd, arquivos, ldap e cliente). Essa padronização é fundamental porque facilita a administração e o diagnóstico de problemas durante o trabalho em grupo, garante que os logs, terminais e serviços identifiquem corretamente a origem das requisições, e alinha a identidade própria de cada servidor com os registros configurados no DNS e com os serviços que dependem de nomes para funcionar (como o cliente SSSD buscando o servidor ldap, o Apache aplicando virtual hosts ou a aplicação web conectando-se ao bd).
+
+O hostname é o nome único que identifica uma máquina na rede. No projeto, ele é configurado como o FQDN ( Domínio Totalmente Qualificado), que une o nome do serviço ao domínio do grupo, por exemplo, ```ns1.grupo0.bsi-26-2.maceio.lab```. No Projeto Final, cada máquina assume o nome do serviço que hospeda (gw, ns1, ns2, www, bd, arquivos, ldap e cliente). Essa padronização é fundamental porque facilita a administração e o diagnóstico de problemas durante o trabalho em grupo.
+
 ```
 sudo hostnamectl set-hostname ns1.grupo3.bsi-26-2.maceio.lab
 sudo nano /etc/hosts
