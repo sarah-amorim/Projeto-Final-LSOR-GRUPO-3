@@ -9,7 +9,9 @@ O hostname é o nome único que identifica uma máquina na rede. No projeto, ele
 sudo hostnamectl set-hostname ns1.grupo3.bsi-26-2.maceio.lab
 sudo nano /etc/hosts
 ```
-No /etc/hosts deixe só a própria VM:
+
+No ```/etc/hosts``` deixe só a própria VM:
+
 ```
 127.0.0.1   localhost
 127.0.1.1   ns1.grupo3.bsi-26-2.maceio.lab ns1
