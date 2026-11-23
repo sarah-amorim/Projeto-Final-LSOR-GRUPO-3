@@ -43,6 +43,8 @@ zone "2.26.10.in-addr.arpa" {
 
 ### Validação
 
+Essa sequência de comandos verifica se a sintaxe do servidor secundário (ns2) está correta, se o serviço iniciou sem falhas e se ele conseguiu baixar automaticamente uma cópia das zonas direta e reversa a partir do servidor primário (ns1).
+
 ```
 sudo named-checkconf
 sudo systemctl restart named
