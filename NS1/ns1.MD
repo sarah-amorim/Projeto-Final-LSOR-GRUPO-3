@@ -29,21 +29,9 @@ O arquivo ```/etc/bind/named.conf.options``` define o comportamento global e as 
 ![Arquivo /etc/hosts](../imagens/named_conf_options.png)
 
 O arquivo ```/etc/bind/named.conf.local``` é utilizado no BIND9 para declarar as zonas locais pelas quais o servidor DNS é responsável de forma autoritativa, informando onde estão armazenados os registros e como ocorre a sincronização com o servidor secundário (ns2).
-```
-zone "grupo3.bsi-26-2.maceio.lab" {
-    type primary;
-    file "/etc/bind/db.grupo3";
-    allow-transfer { 10.26.2.116; };
-    also-notify    { 10.26.2.116; };
-};
 
-zone "2.26.10.in-addr.arpa" {
-    type primary;
-    file "/etc/bind/db.10.26.2";
-    allow-transfer { 10.26.2.116; };
-    also-notify    { 10.26.2.116; };
-};
-```
+![Arquivo /etc/hosts](../imagens/named_conf_local.png)
+
 O arquivo ```/etc/bind/db.grupo3``` é o arquivo de zona direta do Grupo 3, responsável por mapear cada nome de máquina do domínio para o seu respectivo endereço IPv4.
 ```
 $TTL 3600
