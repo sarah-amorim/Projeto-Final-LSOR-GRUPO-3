@@ -28,7 +28,9 @@ sudo apt-get install -y bind9 bind9-utils dnsutils
 Use o mesmo ```named.conf.options``` do ns1. 
 ![Arquivo /etc/named.conf.options](../imagens/)
 
-No ```/etc/bind/named.conf.local``` declare as zonas como secundárias:
+### No ```/etc/bind/named.conf.local``` declare as zonas como secundárias
+
+No ns2, as zonas precisam ser configuradas como type secondary; para que ele atue como uma réplica sincronizada e somente leitura do ns1, garantindo consistência automática dos dados e evitando falhas humanas de manutenção.
 
 ```
 zone "grupo3.bsi-26-2.maceio.lab" {
