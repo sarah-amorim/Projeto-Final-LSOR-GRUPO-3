@@ -102,3 +102,6 @@ sudo systemctl restart named
 sudo systemctl status named --no-pager
 dig @127.0.0.1 www.grupo3.bsi-26-2.maceio.lab +short     # 10.26.2.117
 ```
+![Saída da validação](../imagens/validacao-saida.png)
+
+
