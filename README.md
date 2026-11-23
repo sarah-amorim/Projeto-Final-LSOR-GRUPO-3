@@ -11,13 +11,11 @@
 
 | Integrante | Matrícula | Usuário (LDAP) | uidNumber |
 |:--|:--|:--|:--:|
-| Sarah Amorim dos Santos | 2024014201 | sarah.amorim | 10001 |
-| Pedro Henrique Cavalcante Rocha | 2023007730 | pedro.rocha | 10002 |
-| Marco Bueno | 2021008953 | marco.bueno | 10003 |
-| Arthur Soares Silva | 2021008710 | arthur.soares | 10004 |
+| Sarah Amorim dos Santos | 2024014201 | sarah.santos | 10001 |
+| Pedro Henrique Cavalcante Rocha | 2023007730 | pedrohenrique.rocha | 10002 |
+| Marco Bueno | 2021008953 | marco.padilha | 10003 |
+| Arthur Soares Silva | 2021008710 | arthur.silva | 10004 |
 | (usuário restrito a SFTP) | — | — | 10100 |
-
-> Nenhuma senha, chave privada ou *hash* `{SSHA}` é publicada neste repositório.
 
 ---
 
@@ -25,7 +23,7 @@
 
 Na Etapa 1, o grupo montou uma rede privada com IPs fixos, nomes no domínio do grupo e um gateway NAT. No Projeto Final, essa estrutura vira um ambiente de serviços completo, como o de uma pequena empresa, com **login unificado**: cada integrante tem uma única conta e senha, guardadas no LDAP, usadas em todas as VMs e serviços.
 
-Nesta fase, o projeto usa as **7 VMs** fornecidas pelo professor (`10.26.2.115` a `10.26.2.121`), uma para cada serviço. O `gw` da Etapa 1 não é usado (ver seção 7).
+Nesta fase, o projeto usa as **7 VMs** fornecidas pelo professor (`10.26.2.115` a `10.26.2.121`), uma para cada serviço. 
 
 ## 2. Objetivo
 
@@ -70,8 +68,8 @@ Diagrama editável: <link do Lucid ou arquivo>
 ## 4. Endereçamento, nomes e serviços
 
 - Rede do grupo: `10.26.2.115` a `10.26.2.121` · Máscara: <a confirmar>
-- Rota padrão das VMs: <gateway da rede 10.26.2.x, a confirmar>
-- DNS da rede (encaminhador do BIND): <a confirmar>
+- Rota padrão das VMs: 
+- DNS da rede (encaminhador do BIND): 
 
 | VM | Serviço (hostname) | IP | FQDN |
 |:--|:--|:--|:--|
@@ -106,47 +104,9 @@ ip -br addr
 ip route                  # deve haver uma única rota padrão
 ```
 
-```text
-<colar as saídas e comentar: quantos IPs e quantas rotas padrão aparecem?>
-```
-
 No `/etc/hosts` fica só a linha `127.0.1.1` com o nome da própria VM; os demais nomes passam a vir do DNS.
 
-### 6.2 Remover as contas locais da Etapa 1
-
-As contas dos integrantes criadas na Etapa 1 são removidas (mantendo o `administrador`), senão o Linux usa a conta local e ignora a do LDAP.
-
-```bash
-<comandos usados>
-getent passwd | grep -c <usuário>
-```
-
-```text
-<colar a saída>
-```
-
-### 6.3 Snapshots
-
-Snapshot de cada VM antes de configurar cada serviço: <registrar print ou lista>.
-
 ---
-
-## 7. Gateway — não utilizado nesta fase
-
-O ambiente tem 7 VMs, uma por serviço, e nenhuma delas é o `gw` da Etapa 1. A rota padrão e a saída para a internet vêm da própria rede `10.26.2.x` <confirmar com o professor>.
-
-```bash
-ip route
-ping -c 2 1.1.1.1
-```
-
-```text
-<colar as saídas>
-```
-
-**O que a saída comprova:** <1 ou 2 frases>
-
-> O firewall com `FORWARD` em `DROP` (bônus) depende do `gw` e, por isso, não foi realizado.
 
 ## 8. DNS — `ns1` (primário) e `ns2` (secundário)
 
@@ -194,10 +154,6 @@ Serial do SOA no formato `AAAAMMDDnn`, incrementado a cada alteração.
 
 ### 8.3 `ns2`: zonas secundárias
 
-```text
-<colar named.conf.local do ns2 com type secondary e masters { 10.26.2.115; }>
-```
-
 ### 8.4 Validação
 
 ```bash
@@ -205,10 +161,6 @@ sudo named-checkconf
 sudo named-checkzone grupo3.bsi-26-2.maceio.lab /etc/bind/db.grupo3
 sudo named-checkzone 2.26.10.in-addr.arpa /etc/bind/db.10.26.2
 sudo rndc reload
-```
-
-```text
-<colar as saídas>
 ```
 
 ### 8.5 DNS de todas as VMs apontando para ns1 e ns2
@@ -223,10 +175,6 @@ sudo rndc reload
 resolvectl status
 ```
 
-```text
-<colar a saída>
-```
-
 ## 9. LDAP — `ldap`
 
 Base: `dc=grupo3,dc=bsi-26-2,dc=maceio,dc=lab`
@@ -235,10 +183,6 @@ Base: `dc=grupo3,dc=bsi-26-2,dc=maceio,dc=lab`
 sudo apt-get install -y slapd ldap-utils
 sudo dpkg-reconfigure slapd      # domínio: grupo3.bsi-26-2.maceio.lab
 sudo slapcat | grep ^dn
-```
-
-```text
-<colar a saída>
 ```
 
 ### 9.1 Estrutura, grupos e usuários
@@ -287,10 +231,6 @@ loginShell: /bin/bash
 ldapadd -x -D cn=admin,dc=grupo3,dc=bsi-26-2,dc=maceio,dc=lab -W -f base.ldif
 ldapsearch -x -LLL -H ldap://ldap.grupo3.bsi-26-2.maceio.lab \
   -b dc=grupo3,dc=bsi-26-2,dc=maceio,dc=lab "(objectClass=posixAccount)" uid uidNumber gidNumber
-```
-
-```text
-<colar as saídas>
 ```
 
 ### 9.2 TLS (StartTLS) — bônus
@@ -348,10 +288,6 @@ id nome.sobrenome
 grep nome.sobrenome /etc/passwd
 ```
 
-```text
-<colar as saídas; o grep não deve retornar nada: a conta não é local>
-```
-
 | VM | getent | id (lsor-g3) | login SSH | sudo |
 |:--|:--:|:--:|:--:|:--:|
 | ns1 | | | | |
@@ -384,13 +320,6 @@ testparm
 
 Trecho do `smb.conf`:
 
-```text
-<colar os blocos [publico] e [grupo3] com valid users, force group, create mask 0660 e directory mask 2770>
-```
-
-```text
-<colar as saídas>
-```
 
 ## 12. Servidor web e banco de dados — `www` e `bd`
 
@@ -403,19 +332,11 @@ sudo apt-get install -y mariadb-server
 # <usuário da aplicação restrito ao IP do www (10.26.2.117), com SELECT/INSERT/UPDATE/DELETE>
 ```
 
-```text
-<colar: SHOW DATABASES; SHOW GRANTS FOR '<usuário>'@'10.26.2.117';>
-```
-
 ### 12.2 `www` (Apache + PHP)
 
 ```bash
 sudo apt-get install -y apache2 php php-mysql libapache2-mod-php
 sudo a2enmod authnz_ldap ldap
-```
-
-```text
-<colar o virtual host www.grupo3.bsi-26-2.maceio.lab, sem senhas>
 ```
 
 - Pasta do site: grupo `lsor-g3`, permissão `2775`, para qualquer integrante poder atualizá-la.
@@ -444,9 +365,6 @@ sudo chown novato:sftpusers /srv/sftp/novato/arquivos
 sudo sshd -t && sudo systemctl restart ssh
 ```
 
-```text
-<colar as saídas>
-```
 
 ---
 
@@ -470,19 +388,6 @@ Registre, para cada teste, **o comando, a saída (ou print) e uma frase dizendo 
 | 12 | Web | `curl -o /dev/null -w '%{http_code}\n' http://www/admin/`, sem e com `-u nome.sobrenome` | 401 sem senha; 200 com o integrante | ☐ |
 | 13 | Web | `lynx http://www/admin/` com a conta de um integrante para cadastrar um registro, e `SELECT` no `bd` | Registro gravado no banco | ☐ |
 | 14 | SFTP | `sftp novato@www` e depois `ssh novato@www` | SFTP só na pasta `arquivos`; SSH recusado | ☐ |
-
-### Evidências
-
-#### Teste 1
-```bash
-<comando>
-```
-```text
-<saída>
-```
-**O que comprova:** <frase>
-
-*(repetir o bloco para os testes 2 a 14)*
 
 ---
 
