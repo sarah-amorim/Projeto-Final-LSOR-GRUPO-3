@@ -14,3 +14,37 @@ sudo nano /etc/hosts
 No ```/etc/hosts``` deixe só a própria VM:
 
 ![Arquivo /etc/hosts](../imagens/)
+
+### Instalação e configuração do BIND
+O BIND (sigla para Berkeley Internet Name Domain) é o software de servidor DNS mais utilizado na internet para traduzir nomes de domínio em endereços IP e vice-versa, originalmente criado na Universidade da Califórnia em Berkeley e atualmente mantido pelo ISC (Internet Systems Consortium).
+
+```
+sudo apt-get update
+sudo apt-get install -y bind9 bind9-utils dnsutils
+```
+
+![Confirmação de instalação do BIND](../imagens/)
+
+Use o mesmo named.conf.options do ns1. No /etc/bind/named.conf.local declare as zonas como secundárias:
+```
+zone "grupo3.bsi-26-2.maceio.lab" {
+    type secondary;
+    primaries { 10.26.2.115; };
+    file "/var/cache/bind/db.grupo3";
+};
+
+zone "2.26.10.in-addr.arpa" {
+    type secondary;
+    primaries { 10.26.2.115; };
+    file "/var/cache/bind/db.10.26.2";
+};
+```
+
+Validação
+```
+sudo named-checkconf
+sudo systemctl restart named
+sudo journalctl -u named --no-pager -n 20 | grep -i transfer   # "Transfer completed" nas duas zonas
+ls -l /var/cache/bind/                                         # db.grupo3 e db.10.26.2
+dig @127.0.0.1 ldap.grupo3.bsi-26-2.maceio.lab +short          # 10.26.2.120
+```
