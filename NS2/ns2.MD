@@ -25,7 +25,10 @@ sudo apt-get install -y bind9 bind9-utils dnsutils
 
 ![Confirmação de instalação do BIND](../imagens/)
 
-Use o mesmo ```named.conf.options``` do ns1. No ```/etc/bind/named.conf.local``` declare as zonas como secundárias:
+Use o mesmo ```named.conf.options``` do ns1. 
+![Arquivo /etc/named.conf.options](../imagens/)
+
+No ```/etc/bind/named.conf.local``` declare as zonas como secundárias:
 
 ```
 zone "grupo3.bsi-26-2.maceio.lab" {
