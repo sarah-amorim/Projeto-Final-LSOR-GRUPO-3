@@ -25,7 +25,7 @@ sudo apt-get install -y bind9 bind9-utils dnsutils
 
 ![Confirmação de instalação do BIND](../imagens/)
 
-###Use o mesmo ```named.conf.options``` do ns1. 
+### Use o mesmo ```named.conf.options``` do ns1. 
 
 <!--adicionar imagem aqui-->
 
