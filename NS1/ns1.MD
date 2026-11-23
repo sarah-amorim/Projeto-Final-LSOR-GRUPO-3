@@ -12,7 +12,7 @@ sudo nano /etc/hosts
 
 No ```/etc/hosts``` deixe só a própria VM:
 
-
+![Arquivo /etc/hosts](../imagens/etc-hosts.png)
 
 ### Instalação e configuração do BIND
 O BIND (sigla para Berkeley Internet Name Domain) é o software de servidor DNS mais utilizado na internet para traduzir nomes de domínio em endereços IP e vice-versa, originalmente criado na Universidade da Califórnia em Berkeley e atualmente mantido pelo ISC (Internet Systems Consortium).
