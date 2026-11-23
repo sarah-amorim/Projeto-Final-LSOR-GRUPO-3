@@ -37,22 +37,9 @@ O arquivo ```/etc/bind/db.grupo3``` é o arquivo de zona direta do Grupo 3, resp
 ![Arquivo /etc/bind/db.grupo3](../imagens/db-grupo3.png)
 
 O arquivo ```/etc/bind/db.10.26.2``` é o arquivo de zona reversa do Grupo 3, responsável por realizar o caminho oposto ao da zona direta: traduzir um endereço IPv4 de volta para o seu nome de domínio completo (FQDN), algo essencial para auditoria de logs, verificação de segurança de serviços como SSH e e-mail, e testes de diagnóstico com comandos como dig -x.
-```
-$TTL 3600
-@       IN  SOA ns1.grupo3.bsi-26-2.maceio.lab. administrador.grupo3.bsi-26-2.maceio.lab. (
-                2026112201 3600 900 604800 300 )
 
-        IN  NS      ns1.grupo3.bsi-26-2.maceio.lab.
-        IN  NS      ns2.grupo3.bsi-26-2.maceio.lab.
+![Arquivo /etc/bind/db.10.26.2](../imagens/db-10-26-2.png)
 
-115     IN  PTR     ns1.grupo3.bsi-26-2.maceio.lab.
-116     IN  PTR     ns2.grupo3.bsi-26-2.maceio.lab.
-117     IN  PTR     www.grupo3.bsi-26-2.maceio.lab.
-118     IN  PTR     bd.grupo3.bsi-26-2.maceio.lab.
-119     IN  PTR     arquivos.grupo3.bsi-26-2.maceio.lab.
-120     IN  PTR     ldap.grupo3.bsi-26-2.maceio.lab.
-121     IN  PTR     cliente.grupo3.bsi-26-2.maceio.lab.
-```
 ### Validação
 Essa sequência de comandos serve para testar a sintaxe das configurações, aplicar as alterações e confirmar se o servidor DNS primário (ns1) está respondendo corretamente antes de avançar para a configuração do servidor secundário (ns2).
 ```
