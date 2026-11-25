@@ -42,6 +42,10 @@ O arquivo ```/etc/bind/db.192.168.26``` é o arquivo de zona reversa do Grupo 3,
 
 ### Netplan
 
+O arquivo ```/etc/netplan/00-installer-config.yaml``` é a configuração do Netplan, o utilitário padrão do Ubuntu Server para gerenciar as interfaces de rede do sistema operacional em formato YAML. Ele serve para definir de forma permanente como a máquina virtual se conecta à rede: quais placas de rede estão ativas, se os endereços são fixos (dhcp4: false) ou dinâmicos, qual é o gateway de saída e quais servidores DNS o próprio sistema operacional deve consultar. No final do arquivo, renderer: networkd indica que o serviço systemd-networkd aplica essas regras no sistema, e version: 2 especifica a versão da sintaxe do Netplan.
+
+- Nesta configuração específica do servidor ns1, existem duas placas de rede configuradas (ens160 e ens192), e cada endereço IP tem um papel distinto na comunicação da máquina.
+
 ![Arquivo netplan](../imagens/netplan-ns1.png)
 
 ### Validação
