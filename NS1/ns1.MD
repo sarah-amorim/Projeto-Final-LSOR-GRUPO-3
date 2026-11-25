@@ -43,11 +43,13 @@ O arquivo ```/etc/bind/db.192.168.26``` é o arquivo de zona reversa do Grupo 3,
 ### Validação
 Essa sequência de comandos serve para testar a sintaxe das configurações, aplicar as alterações e confirmar se o servidor DNS primário (ns1) está respondendo corretamente antes de avançar para a configuração do servidor secundário (ns2).
 ```
+sudo named-checkconf
+sudo named-checkzone grupo3.bsi-26-2.maceio.lab /etc/bind/db.grupo3
 sudo named-checkzone 26.168.192.in-addr.arpa /etc/bind/db.192.168.26
-grep -E "^zone" /etc/bind/named.conf.local
-dig @127.0.0.1 -x 192.168.26.55 +short
-dig @127.0.0.1 26.168.192.in-addr.arpa SOA +short
-sudo journalctl -u named --no-pager -l -n 20 | grep -iE "error|not loaded|refused"
+sudo systemctl restart named
+sudo systemctl enable named
+sudo systemctl status named --no-pager
+sudo ufw status
 ```
 ![Saída da validação](../imagens/validacao-saida.png)
 
