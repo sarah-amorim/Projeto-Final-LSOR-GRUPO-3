@@ -34,7 +34,7 @@ O arquivo ```/etc/bind/named.conf.local``` é utilizado no BIND9 para declarar a
 
 O arquivo ```/etc/bind/db.grupo3``` é o arquivo de zona direta do Grupo 3, responsável por mapear cada nome de máquina do domínio para o seu respectivo endereço IPv4.
 
-![Arquivo /etc/bind/db.grupo3](../imagens/db-grupo3.png)
+![Arquivo /etc/bind/db.grupo3](../imagens/db-grupo3.jpeg)
 
 O arquivo ```/etc/bind/db.192.168.26``` é o arquivo de zona reversa do Grupo 3, responsável por realizar o caminho oposto ao da zona direta: traduzir um endereço IPv4 de volta para o seu nome de domínio completo (FQDN), algo essencial para auditoria de logs, verificação de segurança de serviços como SSH e e-mail, e testes de diagnóstico com comandos como dig -x.
 
