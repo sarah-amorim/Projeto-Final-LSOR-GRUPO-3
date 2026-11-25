@@ -36,7 +36,7 @@ O arquivo ```/etc/bind/db.grupo3``` é o arquivo de zona direta do Grupo 3, resp
 
 ![Arquivo /etc/bind/db.grupo3](../imagens/db-grupo3.png)
 
-O arquivo ```/etc/bind/db.10.26.2``` é o arquivo de zona reversa do Grupo 3, responsável por realizar o caminho oposto ao da zona direta: traduzir um endereço IPv4 de volta para o seu nome de domínio completo (FQDN), algo essencial para auditoria de logs, verificação de segurança de serviços como SSH e e-mail, e testes de diagnóstico com comandos como dig -x.
+O arquivo ```/etc/bind/db.192.168.26``` é o arquivo de zona reversa do Grupo 3, responsável por realizar o caminho oposto ao da zona direta: traduzir um endereço IPv4 de volta para o seu nome de domínio completo (FQDN), algo essencial para auditoria de logs, verificação de segurança de serviços como SSH e e-mail, e testes de diagnóstico com comandos como dig -x.
 
 ![Arquivo /etc/bind/db.10.26.2](../imagens/db-10-26-2.png)
 
