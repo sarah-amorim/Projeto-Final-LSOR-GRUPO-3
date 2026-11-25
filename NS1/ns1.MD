@@ -51,6 +51,6 @@ sudo systemctl enable named
 sudo systemctl status named --no-pager
 sudo ufw status
 ```
-![Saída da validação](../imagens/validacao-saida.png)
+![Saída da validação](../imagens/validacao-saida.jpeg)
 
 
