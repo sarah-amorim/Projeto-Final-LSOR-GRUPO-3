@@ -13,7 +13,7 @@ sudo nano /etc/hosts
 
 No ```/etc/hosts``` deixe só a própria VM:
 
-![Arquivo /etc/hosts](../imagens/)
+![Arquivo /etc/hosts](../imagens/etc-ns2.png)
 
 ### Instalação e configuração do BIND
 O BIND é o software de servidor DNS mais utilizado na internet para traduzir nomes de domínio em endereços IP e vice-versa.
