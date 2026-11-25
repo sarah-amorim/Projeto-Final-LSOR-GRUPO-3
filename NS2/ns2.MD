@@ -33,19 +33,8 @@ sudo apt-get install -y bind9 bind9-utils dnsutils
 
 No ns2, as zonas precisam ser configuradas como type secondary; para que ele atue como uma réplica sincronizada e somente leitura do ns1, garantindo consistência automática dos dados e evitando falhas humanas de manutenção.
 
-```
-zone "grupo3.bsi-26-2.maceio.lab" {
-    type secondary;
-    primaries { 10.26.2.115; };
-    file "/var/cache/bind/db.grupo3";
-};
 
-zone "2.26.10.in-addr.arpa" {
-    type secondary;
-    primaries { 10.26.2.115; };
-    file "/var/cache/bind/db.10.26.2";
-};
-```
+![Arquivo /etc/bind/named.conf.local](../imagens/named_conf_local.png)
 
 ### Validação
 
