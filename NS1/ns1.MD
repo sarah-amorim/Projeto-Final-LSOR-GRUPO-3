@@ -26,7 +26,7 @@ sudo apt-get install -y bind9 bind9-utils dnsutils
 
 O arquivo ```/etc/bind/named.conf.options``` define o comportamento global e as regras de segurança do servidor DNS BIND9, estabelecendo quem pode fazer consultas, como resolver nomes externos e onde armazenar dados temporários.
 
-![Arquivo /etc/hosts](../imagens/named_conf_options.png)
+![Arquivo /etc/bind/named.conf.options](../imagens/named_conf_options.png)
 
 O arquivo ```/etc/bind/named.conf.local``` é utilizado no BIND9 para declarar as zonas locais pelas quais o servidor DNS é responsável de forma autoritativa, informando onde estão armazenados os registros e como ocorre a sincronização com o servidor secundário (ns2).
 
@@ -51,6 +51,6 @@ sudo systemctl enable named
 sudo systemctl status named --no-pager
 sudo ufw status
 ```
-![Saída da validação](../imagens/validacao-saida.jpeg)
+![Saída da validação](../imagens/validacao_saida.jpeg)
 
 
