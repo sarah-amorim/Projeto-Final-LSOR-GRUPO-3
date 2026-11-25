@@ -38,7 +38,7 @@ O arquivo ```/etc/bind/db.grupo3``` é o arquivo de zona direta do Grupo 3, resp
 
 O arquivo ```/etc/bind/db.192.168.26``` é o arquivo de zona reversa do Grupo 3, responsável por realizar o caminho oposto ao da zona direta: traduzir um endereço IPv4 de volta para o seu nome de domínio completo (FQDN), algo essencial para auditoria de logs, verificação de segurança de serviços como SSH e e-mail, e testes de diagnóstico com comandos como dig -x.
 
-![Arquivo /etc/bind/db.10.26.2](../imagens/db-10-26-2.jpeg)
+![Arquivo /etc/bind/db.10.26.2](../imagens/db_192_168_26.jpeg)
 
 ### Validação
 Essa sequência de comandos serve para testar a sintaxe das configurações, aplicar as alterações e confirmar se o servidor DNS primário (ns1) está respondendo corretamente antes de avançar para a configuração do servidor secundário (ns2).
