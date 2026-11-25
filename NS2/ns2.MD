@@ -27,7 +27,7 @@ sudo apt-get install -y bind9 bind9-utils dnsutils
 
 ### Use o mesmo ```named.conf.options``` do ns1. 
 
-<!--adicionar imagem aqui-->
+![named.conf.options do ns2](../imagens/named.conf.options_ns2.png)
 
 ### No ```/etc/bind/named.conf.local``` declare as zonas como secundárias
 
