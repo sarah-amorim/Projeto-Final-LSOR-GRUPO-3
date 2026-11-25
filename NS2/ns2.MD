@@ -36,6 +36,12 @@ No ns2, as zonas precisam ser configuradas como type secondary; para que ele atu
 
 ![Arquivo /etc/bind/named.conf.local](../imagens/named_conf_local.png)
 
+### Netplan
+O arquivo /etc/netplan/00-installer-config.yaml é a configuração do Netplan, o utilitário padrão do Ubuntu Server para gerenciar as interfaces de rede do sistema operacional em formato YAML. Ele serve para definir de forma permanente como a máquina virtual se conecta à rede: quais placas de rede estão ativas, se os endereços são fixos (dhcp4: false) ou dinâmicos, qual é o gateway de saída e quais servidores DNS o próprio sistema operacional deve consultar. No final do arquivo, renderer: networkd indica que o serviço systemd-networkd aplica essas regras no sistema, e version: 2 especifica a versão da sintaxe do Netplan.
+
+![Arquivo do netplan do ns2](../imagens/netplan-ns2.png)
+
+
 ### Validação
 
 Essa sequência de comandos verifica se a sintaxe do servidor secundário (ns2) está correta, se o serviço iniciou sem falhas e se ele conseguiu baixar automaticamente uma cópia das zonas direta e reversa a partir do servidor primário (ns1).
