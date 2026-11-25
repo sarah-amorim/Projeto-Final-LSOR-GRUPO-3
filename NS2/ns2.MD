@@ -44,6 +44,8 @@ Essa sequência de comandos verifica se a sintaxe do servidor secundário (ns2) 
 sudo named-checkconf
 sudo systemctl restart named
 sudo journalctl -u named --no-pager -n 20 | grep -i transfer   # "Transfer completed" nas duas zonas
-ls -l /var/cache/bind/                                         # db.grupo3 e db.10.26.2
-dig @127.0.0.1 ldap.grupo3.bsi-26-2.maceio.lab +short          # 10.26.2.120
+ls -l /var/cache/bind/                                         
+dig @127.0.0.1 ldap.grupo3.bsi-26-2.maceio.lab +short          
 ```
+![Arquivo de validação](../imagens/validacao-ns2.png)
+
