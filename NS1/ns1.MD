@@ -40,6 +40,10 @@ O arquivo ```/etc/bind/db.192.168.26``` é o arquivo de zona reversa do Grupo 3,
 
 ![Arquivo /etc/bind/db.10.26.2](../imagens/db_192_168_26.jpeg)
 
+### Netplan
+
+![Arquivo netplan](../imagens/.jpeg)
+
 ### Validação
 Essa sequência de comandos serve para testar a sintaxe das configurações, aplicar as alterações e confirmar se o servidor DNS primário (ns1) está respondendo corretamente antes de avançar para a configuração do servidor secundário (ns2).
 ```
@@ -52,5 +56,4 @@ sudo systemctl status named --no-pager
 sudo ufw status
 ```
 ![Saída da validação](../imagens/validacao_saida.jpeg)
-
 
